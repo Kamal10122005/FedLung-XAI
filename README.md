@@ -1,43 +1,69 @@
-## Dataset Setup
+# FedLung-XAI
 
-The datasets are not included in this repository because of their large size.
+## Privacy-Preserving Federated Multi-Class Lung Disease Diagnosis with Explainable AI
 
-### 1. Multi-Disease Dataset
+FedLung-XAI is an AI-based lung disease diagnosis system that combines Federated Learning with Explainable AI (XAI) for chest X-ray classification.
 
-Download the four-class lung disease dataset used for multi-class classification.
+The system uses a multi-class deep learning model to classify chest X-ray images into four disease categories and uses Grad-CAM to provide visual explanations for model predictions.
 
-Place the extracted dataset at:
+> **Disclaimer:** This project is intended for research and educational purposes only. AI predictions are not medical diagnoses.
 
-```text
-FedLung-XAI/data/multidisease/
-```
+---
 
-Maintain the class folders required by the data loader.
+## Features
 
-### 2. Chest X-ray Dataset
+- Multi-class lung disease classification
+- Four supported classes:
+  - COVID-19
+  - NORMAL
+  - PNEUMONIA
+  - TUBERCULOSIS
+- Federated Learning using Flower
+- Grad-CAM based Explainable AI
+- Prediction confidence scores
+- Original X-ray visualization
+- Grad-CAM heatmap visualization
+- React-based web interface
+- Flask backend
+- AI chat assistant
+- Training and evaluation scripts
 
-The NORMAL and PNEUMONIA dataset is used for the binary classification experiments.
+---
 
-Place the extracted dataset at:
-
-```text
-FedLung-XAI/data/chest_xray/
-```
-
-Maintain the expected train, validation, and test folder structure.
-
-### Final Directory Structure
+## Project Structure
 
 ```text
 FedLung-XAI/
 ├── backend/
+│   ├── app.py
+│   ├── gradcam_service.py
+│   └── ...
+│
 ├── frontend/
+│   └── src/
+│       ├── components/
+│       │   ├── ChatPanel.jsx
+│       │   └── ChatPanel.css
+│       ├── App.jsx
+│       └── App.css
+│
 ├── src/
+│   ├── data_loader.py
+│   ├── multidisease_loader.py
+│   ├── multidisease_model.py
+│   ├── train.py
+│   ├── train_multidisease.py
+│   ├── evaluate.py
+│   ├── evaluate_multidisease.py
+│   ├── gradcam.py
+│   ├── federated_data.py
+│   ├── fl_client.py
+│   ├── fl_server.py
+│   └── run_federated.py
+│
 ├── data/
 │   ├── multidisease/
 │   └── chest_xray/
+│
 ├── requirements.txt
 └── README.md
-```
-
-**Important:** Download the datasets from their original sources and follow their licensing requirements. The dataset files themselves are not included in this repository.
