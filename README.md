@@ -67,3 +67,24 @@ FedLung-XAI/
 │
 ├── requirements.txt
 └── README.md
+
+
+Backend — Terminal 1
+From the FedLung-XAI root folder:
+    venv\Scripts\activate
+    python backend/app.py
+
+You should see the Flask server running around:
+http://127.0.0.1:5000
+
+Keep this terminal running.
+
+Frontend — Terminal 2
+Open a new VS Code terminal (+ button).
+    cd frontend
+    npm run dev
+
+Vite will give you something like:
+Local: http://localhost:5173/
+
+Open that URL in your browser.
