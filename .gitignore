@@ -1,0 +1,28 @@
+
+# Virtual Environment
+venv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Environment Variables
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Dataset
+data/
+*.zip
+
+# Model Files
+*.pth
+*.pt
+*.h5
+
+# Results
+results/
+
+# IDE
+.vscode/

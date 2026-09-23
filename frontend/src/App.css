@@ -1,0 +1,1001 @@
+
+/* ========================================
+   GLOBAL RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #070f20;
+  color: #e2e8f0;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* ========================================
+   MAIN APP
+======================================== */
+
+.app {
+  width: 100%;
+  max-width: 1700px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 10px 26px;
+  overflow: hidden;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.topbar {
+  position: relative;
+  width: 100%;
+  height: 104px;
+  padding: 20px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+
+  background: linear-gradient(135deg, #0e1c35, #09152a);
+  border: 1px solid #203553;
+  border-radius: 20px;
+}
+
+/* CENTER BRAND */
+
+.brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.brand h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* AI TOGGLE */
+
+.ai-toggle {
+  position: absolute;
+  left: 22px;
+
+  width: 88px;
+  height: 48px;
+
+  padding: 0;
+  border: 2px solid #d8d8d8;
+  border-radius: 30px;
+
+  background: #f8f8f8;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: white;
+  color: #7c3aed;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  box-shadow: 0 3px 8px #0003;
+  transition: 0.3s ease;
+}
+
+.ai-toggle.active {
+  background: #ede9fe;
+  border-color: #a78bfa;
+}
+
+.ai-toggle.active .toggle-knob {
+  left: 43px;
+}
+
+/* HEADER ACTIONS */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-button,
+.upload-button,
+.upload-small-button,
+.overlay-button {
+  padding: 12px 20px;
+
+  border: 1px solid #3265c0;
+  border-radius: 12px;
+
+  background: #155de0;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.chat-button:hover,
+.upload-button:hover,
+.upload-small-button:hover,
+.overlay-button:hover {
+  background: #2875f5;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ========================================
+   THREE-COLUMN DASHBOARD
+======================================== */
+
+.dashboard {
+  width: 100%;
+  height: calc(100vh - 124px);
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: 1.15fr 0.9fr 1.1fr;
+  gap: 18px;
+
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* ========================================
+   COMMON CARDS
+======================================== */
+
+.image-panel,
+.result-card {
+  min-width: 0;
+  min-height: 0;
+  padding: 20px;
+
+  background: linear-gradient(145deg, #101d35, #0d192e);
+  border: 1px solid #203553;
+  border-radius: 20px;
+}
+
+/* ========================================
+   PANEL HEADINGS
+======================================== */
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.panel-heading h3,
+.result-card h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.result-card h3 {
+  margin-bottom: 16px;
+}
+
+.panel-heading span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* ========================================
+   LEFT: GRAD-CAM CARD
+======================================== */
+
+.gradcam-card {
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.gradcam-content {
+  width: 100%;
+  height: 0;
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 12px;
+
+  background: #091328;
+  border: 1px solid #1c304d;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.gradcam-content img {
+  width: 88%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.attention-scale {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  flex-shrink: 0;
+
+  color: #cbd5e1;
+  font-size: 11px;
+  text-align: center;
+}
+
+.color-scale {
+  width: 18px;
+  height: 150px;
+  border-radius: 3px;
+
+  background: linear-gradient(
+    to top,
+    blue,
+    cyan,
+    lime,
+    yellow,
+    red
+  );
+}
+
+.gradcam-empty {
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
+}
+
+.gradcam-empty span {
+  display: block;
+  margin-bottom: 10px;
+  color: #60a5fa;
+  font-size: 35px;
+}
+
+.overlay-button {
+  margin-top: 14px;
+  align-self: center;
+
+  padding: 10px 18px;
+
+  background: #16263d;
+  border-color: #334155;
+  flex-shrink: 0;
+}
+
+.overlay-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   MIDDLE PANEL
+======================================== */
+
+.middle-panel {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 18px;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   ORIGINAL X-RAY
+======================================== */
+
+.middle-panel .image-panel {
+  min-height: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container {
+  width: 100%;
+  height: 0;
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #050c1a;
+  border: 1px dashed #30445e;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.empty-state span {
+  color: #3b82f6;
+  font-size: 44px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.empty-state small {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.image-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 10px;
+
+  color: #94a3b8;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.upload-small-button {
+  padding: 8px 14px;
+  font-size: 12px;
+}
+
+/* ========================================
+   PREDICTION RESULT
+======================================== */
+
+.prediction-card {
+  min-height: 0;
+  padding: 18px;
+}
+
+.prediction-placeholder {
+  padding: 18px 14px;
+  text-align: center;
+
+  background: #091328;
+  border: 1px solid #1c304d;
+  border-radius: 14px;
+}
+
+.prediction-placeholder > span {
+  color: #60a5fa;
+  font-size: 30px;
+}
+
+.prediction-placeholder h2 {
+  margin: 8px 0 6px;
+  color: #60a5fa;
+  font-size: 25px;
+  overflow-wrap: anywhere;
+}
+
+.prediction-placeholder p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+/* STRAIGHT CONFIDENCE BAR */
+
+.progress-bar {
+  width: 100%;
+  height: 9px;
+
+  margin-top: 12px;
+
+  background: #1e2d43;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar div {
+  height: 100%;
+
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 20px;
+
+  transition: width 0.4s ease;
+}
+
+.confidence-value {
+  display: block;
+  margin-top: 8px;
+  color: #60a5fa;
+  font-size: 15px;
+}
+
+.disclaimer {
+  margin-top: 12px;
+  padding: 11px;
+
+  border-radius: 12px;
+  background: #3b2e13;
+
+  color: #fbbf24;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.disclaimer p {
+  margin: 4px 0 0;
+  color: #f1d18a;
+}
+
+.error-message {
+  margin-top: 8px;
+  color: #f87171;
+  font-size: 12px;
+}
+
+/* ========================================
+   RIGHT: MODEL EXPLANATION
+======================================== */
+
+.model-explanation-card {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  overflow: hidden;
+}
+
+.explanation-boxes {
+  width: 100%;
+  height: 0;
+  flex: 1;
+  min-height: 0;
+
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 14px;
+
+  overflow: hidden;
+}
+
+/* ========================================
+   EXPLANATION BOXES
+======================================== */
+
+.explanation-box {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding: 16px;
+
+  background: #091328;
+  border: 1px solid #36527a;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.attention-box {
+  height: auto;
+  overflow: hidden;
+}
+
+.explanation-main {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   BOX HEADINGS
+======================================== */
+
+.explanation-box-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.explanation-box-title span {
+  color: #a78bfa;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.explanation-box-title h4 {
+  margin: 0;
+  color: #a78bfa;
+  font-size: 17px;
+}
+
+/* ========================================
+   EXPLANATION TEXT
+======================================== */
+
+.explanation-box p {
+  margin: 0;
+
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.6;
+
+  text-align: left;
+  white-space: pre-line;
+}
+
+.explanation-main p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   ATTENTION REGION
+======================================== */
+
+.attention-box .explanation-box-title span,
+.attention-box .explanation-box-title h4 {
+  color: #a78bfa;
+}
+
+.attention-details {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.attention-details p {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.attention-details strong {
+  color: #e2e8f0;
+}
+
+/* ========================================
+   CUSTOM SCROLLBARS
+======================================== */
+
+.explanation-main::-webkit-scrollbar {
+  width: 5px;
+}
+
+.explanation-main::-webkit-scrollbar-track {
+  background: #101b31;
+  border-radius: 10px;
+}
+
+.explanation-main::-webkit-scrollbar-thumb {
+  background: #405b82;
+  border-radius: 10px;
+}
+
+.explanation-main::-webkit-scrollbar-thumb:hover {
+  background: #5c7ba8;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 1200px) {
+  html,
+  body,
+  #root {
+    overflow: auto;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .app {
+    height: auto;
+    min-height: 100vh;
+    padding: 10px 18px 24px;
+    overflow: visible;
+  }
+
+  .dashboard {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    overflow: visible;
+  }
+
+  .gradcam-card {
+    min-height: 650px;
+  }
+
+  .middle-panel {
+    height: 650px;
+  }
+
+  .model-explanation-card {
+    height: 650px;
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 800px) {
+  .topbar {
+    height: auto;
+    min-height: 104px;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    position: static;
+    transform: none;
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ai-toggle {
+    position: static;
+    order: 2;
+  }
+
+  .header-actions {
+    order: 3;
+    margin-left: auto;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .gradcam-card,
+  .middle-panel,
+  .model-explanation-card {
+    grid-column: auto;
+    height: 650px;
+    min-height: 0;
+  }
+
+  .model-explanation-card {
+    height: 600px;
+  }
+}
+
+@media (max-width: 500px) {
+  .app {
+    padding: 8px 10px 20px;
+  }
+
+  .topbar {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .brand h2 {
+    font-size: 20px;
+  }
+
+  .ai-toggle {
+    width: 78px;
+    height: 44px;
+  }
+
+  .toggle-knob {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ai-toggle.active .toggle-knob {
+    left: 39px;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .chat-button,
+  .upload-button {
+    flex: 1;
+    justify-content: center;
+    padding: 11px 8px;
+    text-align: center;
+  }
+
+  .image-panel,
+  .result-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .panel-heading h3,
+  .result-card h3 {
+    font-size: 17px;
+  }
+
+  .gradcam-card,
+  .middle-panel {
+    height: 600px;
+  }
+
+  .model-explanation-card {
+    height: 600px;
+  }
+
+  .gradcam-content {
+    flex-direction: column;
+  }
+
+  .gradcam-content img {
+    width: 100%;
+    height: 80%;
+  }
+
+  .attention-scale {
+    flex-direction: row;
+  }
+
+  .color-scale {
+    width: 140px;
+    height: 14px;
+
+    background: linear-gradient(
+      to right,
+      blue,
+      cyan,
+      lime,
+      yellow,
+      red
+    );
+  }
+
+  .explanation-box {
+    padding: 13px;
+  }
+
+  .explanation-box-title h4 {
+    font-size: 15px;
+  }
+
+  .explanation-box p,
+  .attention-details p {
+    font-size: 12px;
+  }
+}
+/* ========================================
+   AI CHAT POPUP
+======================================== */
+
+.chat-panel,
+.chat-popup,
+.chat-container {
+  position: fixed !important;
+  right: 28px;
+  bottom: 28px;
+  z-index: 9999;
+  max-width: calc(100vw - 40px);
+}
+
+/* Keep chatbot visible */
+.chat-panel *,
+.chat-popup *,
+.chat-container * {
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .chat-panel,
+  .chat-popup,
+  .chat-container {
+    right: 10px;
+    bottom: 10px;
+    max-width: calc(100vw - 20px);
+  }
+}
+/* Floating Gemini AI Chat Popup */
+.chat-popup-wrapper {
+  position: fixed !important;
+  right: 28px;
+  bottom: 28px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  z-index: 99999;
+  background: #0b1830;
+  border: 1px solid #344b70;
+  border-radius: 18px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .chat-popup-wrapper {
+    right: 16px;
+    bottom: 16px;
+    width: calc(100vw - 32px);
+    height: 500px;
+  }
+}
+/* ========================================
+   FINAL AI TOGGLE FIX
+======================================== */
+
+.ai-toggle {
+  position: relative;
+
+  width: 48px;
+  height: 26px;
+  padding: 0;
+
+  display: block;
+
+  border: 1px solid #687080;
+  border-radius: 30px;
+
+  background: #555d6b;
+  overflow: hidden;
+
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* AI Circle */
+.toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #737b89;
+  color: #ffffff;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+
+  transition: left 0.2s ease;
+}
+
+/* Active Position — stays inside toggle */
+.ai-toggle.active .toggle-knob {
+  left: 24px;
+  transform: none;
+}
+
+/* Active Toggle */
+.ai-toggle.active {
+  background: #454d5b;
+  border-color: #8a93a3;
+} 
+/* ========================================
+   NAVBAR FINAL ALIGNMENT FIX
+======================================== */
+
+.topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 20px;
+
+  height: 68px;
+  min-height: 68px;
+  padding: 0 24px;
+}
+
+/* AI Toggle - Left */
+.ai-toggle {
+  grid-column: 1;
+  justify-self: start;
+
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+/* Brand - Center */
+.brand {
+  grid-column: 2;
+  justify-self: center;
+  text-align: center;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Upload Button - Right */
+.header-actions {
+  grid-column: 3;
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.upload-button {
+  white-space: nowrap;
+}
